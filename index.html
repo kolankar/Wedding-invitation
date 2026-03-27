@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanka & Rishikesh — Wedding Invitation</title>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap)" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --peach: #FFDAB3;
+            --blush: #F8C8C8;
+            --ivory: #FFF8F0;
+            --lavender: #E8D5E0;
+            --gold: #D4A853;
+            --gold-light: #F0D78C;
+            --deep-rose: #C48B9F;
+            --text-dark: #5D4E60;
+            --text-light: #8B7B8E;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--ivory);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Floating Floral Elements */
+        .floating-floral {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .floral-1 {
+            top: 10%;
+            left: -50px;
+            width: 200px;
+            animation: floatLeft 20s ease-in-out infinite;
+        }
+
+        .floral-2 {
+            top: 30%;
+            right: -50px;
+            width: 180px;
+            animation: floatRight 25s ease-in-out infinite;
+        }
+
+        .floral-3 {
+            bottom: 20%;
+            left: -30px;
+            width: 150px;
+            animation: floatLeft 22s ease-in-out infinite reverse;
+        }
+
+        .floral-4 {
+            bottom: 10%;
+            right: -40px;
+            width: 170px;
+            animation: floatRight 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(30px) translateY(-20px) rotate(5deg); }
+            50% { transform: translateX(20px) translateY(20px) rotate(-3deg); }
+            75% { transform: translateX(40px) translateY(-10px) rotate(3deg); }
+        }
+
+        @keyframes floatRight {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(-30px) translateY(20px) rotate(-5deg); }
+            50% { transform: translateX(-20px) translateY(-20px) rotate(3deg); }
+            75% { transform: translateX(-40px) translateY(10px) rotate(-3deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--peach) 50%, var(--blush) 100%);
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 168, 83, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(196, 139, 159, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ornament {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .hero-pretext {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--deep-rose);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .couple-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1rem 0;
+            line-height: 1.2;
+            animation: fadeIn 2s ease-out 0.8s both;
+        }
+
+        .couple-names .heart {
+            display: inline-block;
+            color: var(--deep-rose);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin: 0 0.5rem;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-style: italic;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 1.5rem auto;
+            animation: fadeIn 2s ease-out 1.1s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(212, 168, 83, 0.3);
+            animation: fadeIn 2s ease-out 1.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 168, 83, 0.4);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--deep-rose);
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-ornament {
+            width: 80px;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        /* Invitation Section */
+        .invitation {
+            padding: 6rem 2rem;
+            background: var(--ivory);
+            text-align: center;
+        }
+
+        .invitation-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .invitation-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .invitation h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+        }
+
+        .invitation-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            line-height: 2;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+
+        .invitation-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .invitation-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--peach) 0%, var(--blush) 100%);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem 0;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--lavender) 0%, var(--ivory) 100%);
+        }
+
+        .events h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-align: center;
+            color: var(--deep-rose);
+            margin-bottom: 3rem;
+        }
+
+        .events-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(212, 168, 83, 0.15);
+        }
+
+        .event-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .event-details h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-details .date {
+            font-weight: 500;
+            color: var(--deep-rose);
+            margin-bottom: 0.3rem;
+        }
+
+        .event-details .time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-details .venue {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Venue Section */
+        .venue-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--blush) 0%, var(--peach) 50%, var(--lavender) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venue-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="[w3.org](http://www.w3.org/2000/svg)" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px 100px;
+            animation: patternMove 30s linear infinite;
+        }
+
+        @keyframes patternMove {
+            from { background-position: 0 0; }
+            to { background-position: 100px 100px; }
+        }
+
+        .venue-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease;
+        }
+
+        .venue-content.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .venue-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .venue-description {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .venue-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .venue-address {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--blush) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Closing Section */
+        .closing {
+            padding: 6rem 2rem;
+            background: var(--ivory);
+            text-align: center;
+            position: relative;
+        }
+
+        .closing-content {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .closing-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .closing h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--deep-rose);
+            margin-bottom: 1.5rem;
+        }
+
+        .closing-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            line-height: 2;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(135deg, var(--deep-rose) 0%, var(--gold) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(196, 139, 159, 0.3);
+        }
+
+        .final-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(196, 139, 159, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--blush) 100%);
+            text-align: center;
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+
+        .floral-border {
+            width: 100%;
+            max-width: 400px;
+            margin: 1.5rem auto 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            position: relative;
+        }
+
+        .floral-border::before,
+        .floral-border::after {
+            content: '✿';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .floral-border::before { left: 0; }
+        .floral-border::after { right: 0; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .event-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-icon {
+                margin: 0 auto;
+            }
+
+            .event-details .venue {
+                justify-content: center;
+            }
+
+            .floating-floral {
+                display: none;
+            }
+        }
+
+        /* SVG Ornaments */
+        .svg-ornament {
+            fill: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Floral Elements -->
+    <svg class="floating-floral floral-1" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="20" fill="rgba(212, 168, 83, 0.3)"/>
+        <ellipse cx="50" cy="25" rx="8" ry="15" fill="rgba(248, 200, 200, 0.5)"/>
+        <ellipse cx="50" cy="75" rx="8" ry="15" fill="rgba(248, 200, 200, 0.5)"/>
+        <ellipse cx="25" cy="50" rx="15" ry="8" fill="rgba(248, 200, 200, 0.5)"/>
+        <ellipse cx="75" cy="50" rx="15" ry="8" fill="rgba(248, 200, 200, 0.5)"/>
+        <ellipse cx="32" cy="32" rx="10" ry="6" fill="rgba(232, 213, 224, 0.5)" transform="rotate(-45 32 32)"/>
+        <ellipse cx="68" cy="32" rx="10" ry="6" fill="rgba(232, 213, 224, 0.5)" transform="rotate(45 68 32)"/>
+        <ellipse cx="32" cy="68" rx="10" ry="6" fill="rgba(232, 213, 224, 0.5)" transform="rotate(45 32 68)"/>
+        <ellipse cx="68" cy="68" rx="10" ry="6" fill="rgba(232, 213, 224, 0.5)" transform="rotate(-45 68 68)"/>
+    </svg>
+
+    <svg class="floating-floral floral-2" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="15" fill="rgba(196, 139, 159, 0.3)"/>
+        <ellipse cx="50" cy="20" rx="12" ry="18" fill="rgba(255, 218, 179, 0.5)"/>
+        <ellipse cx="50" cy="80" rx="12" ry="18" fill="rgba(255, 218, 179, 0.5)"/>
+        <ellipse cx="20" cy="50" rx="18" ry="12" fill="rgba(255, 218, 179, 0.5)"/>
+        <ellipse cx="80" cy="50" rx="18" ry="12" fill="rgba(255, 218, 179, 0.5)"/>
+    </svg>
+
+    <svg class="floating-floral floral-3" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="18" fill="rgba(232, 213, 224, 0.4)"/>
+        <ellipse cx="50" cy="22" rx="10" ry="16" fill="rgba(212, 168, 83, 0.4)"/>
+        <ellipse cx="50" cy="78" rx="10" ry="16" fill="rgba(212, 168, 83, 0.4)"/>
+        <ellipse cx="22" cy="50" rx="16" ry="10" fill="rgba(212, 168, 83, 0.4)"/>
+        <ellipse cx="78" cy="50" rx="16" ry="10" fill="rgba(212, 168, 83, 0.4)"/>
+    </svg>
+
+    <svg class="floating-floral floral-4" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="12" fill="rgba(248, 200, 200, 0.4)"/>
+        <ellipse cx="50" cy="28" rx="8" ry="14" fill="rgba(196, 139, 159, 0.4)"/>
+        <ellipse cx="50" cy="72" rx="8" ry="14" fill="rgba(196, 139, 159, 0.4)"/>
+        <ellipse cx="28" cy="50" rx="14" ry="8" fill="rgba(196, 139, 159, 0.4)"/>
+        <ellipse cx="72" cy="50" rx="14" ry="8" fill="rgba(196, 139, 159, 0.4)"/>
+    </svg>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <svg class="ornament" viewBox="0 0 100 40">
+                <path d="M50 5 Q30 5 20 20 Q30 35 50 35 Q70 35 80 20 Q70 5 50 5" fill="none" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="50" cy="20" r="3" fill="#D4A853"/>
+                <path d="M35 20 Q40 15 50 20 Q60 25 65 20" fill="none" stroke="#C48B9F" stroke-width="1"/>
+                <path d="M10 20 L35 20 M65 20 L90 20" stroke="#D4A853" stroke-width="0.5"/>
+            </svg>
+            
+            <p class="hero-pretext">Together with their families</p>
+            
+            <h1 class="couple-names">
+                Priyanka <span class="heart">♥</span> Rishikesh
+            </h1>
+            
+            <p class="hero-tagline">
+                "Two souls, one journey — as we begin our forever, 
+                we invite you to share in our joy and bless our union with your presence."
+            </p>
+            
+            <a href="#invitation" class="cta-button">Celebrate With Us</a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 16l-6-6h12l-6 6z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Invitation Section -->
+    <section class="invitation" id="invitation">
+        <div class="invitation-content">
+            <svg class="section-ornament" viewBox="0 0 80 30">
+                <path d="M0 15 L25 15" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="8" fill="none" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="3" fill="#C48B9F"/>
+                <path d="M55 15 L80 15" stroke="#D4A853" stroke-width="1"/>
+            </svg>
+            
+            <h2>You Are Cordially Invited</h2>
+            
+            <div class="invitation-text">
+                <p>
+                    With hearts full of love and dreams woven together,<br>
+                    we are embarking on the most beautiful journey of our lives.
+                </p>
+                <p>
+                    As two families become one, and two hearts unite in love,<br>
+                    we request the honor of your gracious presence<br>
+                    to witness and bless our sacred union.
+                </p>
+                <p>
+                    <span class="invitation-highlight">May 2026 • Nagpur</span>
+                </p>
+                <p>
+                    Your presence will add to our joy and make our celebration complete.<br>
+                    Come, be a part of our love story as we say "I do."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <svg class="section-ornament" viewBox="0 0 80 30">
+            <path d="M0 15 L25 15" stroke="#D4A853" stroke-width="1"/>
+            <circle cx="40" cy="15" r="8" fill="none" stroke="#D4A853" stroke-width="1"/>
+            <circle cx="40" cy="15" r="3" fill="#C48B9F"/>
+            <path d="M55 15 L80 15" stroke="#D4A853" stroke-width="1"/>
+        </svg>
+        
+        <h2>Wedding Celebrations</h2>
+        
+        <div class="events-timeline">
+            <div class="event-card">
+                <div class="event-icon">💍</div>
+                <div class="event-details">
+                    <h3>Engagement Ceremony</h3>
+                    <p class="date">Saturday, 2nd May 2026</p>
+                    <p class="time">9:00 AM – 12:00 Noon</p>
+                    <p class="venue">📍 Royal Wedding Lawn</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon">🌼</div>
+                <div class="event-details">
+                    <h3>Haldi Ceremony</h3>
+                    <p class="date">Saturday, 2nd May 2026</p>
+                    <p class="time">1:00 PM – 2:00 PM</p>
+                    <p class="venue">📍 Royal Wedding Lawn</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon">🎶</div>
+                <div class="event-details">
+                    <h3>Sangeet Ceremony</h3>
+                    <p class="date">Saturday, 2nd May 2026</p>
+                    <p class="time">7:00 PM Onwards</p>
+                    <p class="venue">📍 Royal Wedding Lawn</p>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-icon">🪔</div>
+                <div class="event-details">
+                    <h3>Wedding Ceremony</h3>
+                    <p class="date">Sunday, 3rd May 2026</p>
+                    <p class="time">6:30 PM Onwards</p>
+                    <p class="venue">📍 Royal Wedding Lawn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="venue-section" id="venue">
+        <div class="venue-content">
+            <svg class="section-ornament" viewBox="0 0 80 30">
+                <path d="M0 15 L25 15" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="8" fill="none" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="3" fill="#5D4E60"/>
+                <path d="M55 15 L80 15" stroke="#D4A853" stroke-width="1"/>
+            </svg>
+            
+            <h2>The Venue</h2>
+            
+            <p class="venue-name">Royal Wedding Lawn, Nagpur</p>
+            
+            <p class="venue-description">
+                Royal Wedding, Nagpur, is a popular wedding lawn in Nagpur, a beautiful venue for walking down the aisle with the love of your life.
+            </p>
+            
+            <div class="venue-card">
+                <p class="venue-address">
+                    Royal Wedding Lawn, No. 7, MHKS petrol pump, Royal Wedding, Besides, National Highway, opposite All India Radio,
+ Nagpur, Maharashtra 441002 </p>
+                <div class="map-placeholder">
+    <a href="https://maps.app.goo.gl/BKewn5rCPbb7TMkE8?g_st=aw" target="_blank" style="text-decoration: none; color: inherit; font-weight: 500;">
+        📍 View Location on Google Maps
+    </a>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="closing" id="rsvp">
+        <div class="closing-content">
+            <svg class="section-ornament" viewBox="0 0 80 30">
+                <path d="M0 15 L25 15" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="8" fill="none" stroke="#D4A853" stroke-width="1"/>
+                <circle cx="40" cy="15" r="3" fill="#C48B9F"/>
+                <path d="M55 15 L80 15" stroke="#D4A853" stroke-width="1"/>
+            </svg>
+            
+            <h2>With Love & Gratitude</h2>
+            
+            <p class="closing-text">
+                As we take this beautiful step together,<br>
+                your blessings mean the world to us.<br><br>
+                We cannot wait to see you, dance with you,<br>
+                and create memories that will last a lifetime.<br><br>
+                <em>Save the dates. Pack your dancing shoes. Bring your blessings.</em>
+            </p>
+            
+            <a href="#" class="final-cta">Join Us in Celebration</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-names">Priyanka & Rishikesh</p>
+        <p class="footer-date">MAY 2026 • NAGPUR</p>
+        <div class="floral-border"></div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.invitation-content, .event-card, .venue-content, .closing-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stagger animation for event cards
+        const eventCards = document.querySelectorAll('.event-card');
+        const eventObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        eventCards.forEach(card => eventObserver.observe(card));
+
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for floating florals
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    document.querySelectorAll('.floating-floral').forEach((floral, index) => {
+                        const speed = 0.1 + (index * 0.05);
+                        floral.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>
